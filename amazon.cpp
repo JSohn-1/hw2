@@ -101,16 +101,14 @@ int main(int argc, char* argv[]) {
         string username;
         int hitNumber;
 
-        ss >> username >> hitNumber;
-
-        if (!ds.isValidUsername(username)) {
+        if (!(ss >> username >> hitNumber)) {
+          cout << "Invalid request" << endl;
+        } else if (!ds.isValidUsername(username)) {
           cout << "Invalid username" << endl;
+        } else if (hitNumber < 1 || hitNumber > (int)hits.size()) {
+          cout << "Invalid request" << endl;
         } else {
-          if (hitNumber >= 1 && hitNumber <= (int)hits.size()) {
-            ds.addToCart(username, hits[hitNumber - 1]);
-          } else {
-            cout << "Invalid request" << endl;
-          }
+          ds.addToCart(username, hits[hitNumber - 1]);
         }
       } else if (cmd == "VIEWCART") {
         string username;
