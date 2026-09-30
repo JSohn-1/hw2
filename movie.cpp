@@ -25,15 +25,15 @@ std::set<std::string> Movie::keywords() const {
 }
 
 std::string Movie::displayString() const {
-  return "Genre: " + genre + " Rating: " + rating;
+  return name_ + "\n" + "Genre: " + genre + " Rating: " + rating + "\n" +
+         std::to_string(price_) + " " + std::to_string(qty_) + " left.\n";
 }
 
-void Movie::dump(std::ostream& os) const
-{
-    os << "movie" << std::endl;
-    os << name_ << std::endl;
-    os << price_ << std::endl;
-    os << qty_ << std::endl;
-    os << genre << std::endl;
-    os << rating << std::endl;
+void Movie::dump(std::ostream& os) const {
+  os << "movie" << std::endl;
+  os << name_ << std::endl;
+  os << price_ << std::endl;
+  os << qty_ << std::endl;
+  os << genre << std::endl;
+  os << rating << std::endl;
 }

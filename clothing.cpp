@@ -25,15 +25,15 @@ std::set<std::string> Clothing::keywords() const {
 }
 
 std::string Clothing::displayString() const {
-  return "Size: " + this->size + " Brand: " + this->brand;
+  return name_ + "\n" + "Size: " + size + " Brand: " + brand + "\n" +
+         std::to_string(price_) + " " + std::to_string(qty_) + " left.\n";
 }
 
-void Clothing::dump(std::ostream& os) const
-{
-    os << "clothing" << std::endl;
-    os << name_ << std::endl;
-    os << price_ << std::endl;
-    os << qty_ << std::endl;
-    os << size << std::endl;
-    os << brand << std::endl;
+void Clothing::dump(std::ostream& os) const {
+  os << "clothing" << std::endl;
+  os << name_ << std::endl;
+  os << price_ << std::endl;
+  os << qty_ << std::endl;
+  os << size << std::endl;
+  os << brand << std::endl;
 }
