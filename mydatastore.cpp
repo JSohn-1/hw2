@@ -98,50 +98,44 @@ void MyDataStore::viewCart(std::string username) {
   }
 }
 
-void MyDataStore::buyCart(std::string username) {
-  // Find the user
-  User* user = NULL;
+void MyDataStore::buyCart(std::string username)
+{
+    User* user = NULL;
 
-  for (std::set<User*>::iterator it = users_.begin(); it != users_.end();
-       ++it) {
-    if ((*it)->getName() == username) {
-      user = *it;
-      break;
-    }
-  }
+    for (std::set<User*>::iterator it = users_.begin();
+         it != users_.end();
+         ++it) {
 
-  if (user == NULL) {
-    return;
-  }
-
-  if (carts_.find(username) == carts_.end()) {
-    return;
-  }
-
-  std::vector<Product*>& cart = carts_[username];
-
-  double total = 0;
-
-  for (size_t i = 0; i < cart.size(); ++i) {
-    Product* p = cart[i];
-
-    if (p->getQty() <= 0) {
-      return;
+        if ((*it)->getName() == username) {
+            user = *it;
+            break;
+        }
     }
 
-    total += p->getPrice();
-  }
+    if (user == NULL) {
+        return;
+    }
 
-  if (user->getBalance() < total) {
-    return;
-  }
+    if (carts_.find(username) == carts_.end()) {
+        return;
+    }
 
-  // Only modify anything after the entire purchase is confirmed
-  user->deductAmount(total);
+    std::vector<Product*>& cart = carts_[username];
+    std::vector<Product*> remaining;
 
-  for (size_t i = 0; i < cart.size(); ++i) {
-    cart[i]->subtractQty(1);
-  }
+    for (size_t i = 0; i < cart.size(); ++i) {
+        Product* p = cart[i];
 
-  cart.clear();
+        if (p->getQty() > 0 &&
+            user->getBalance() >= p->getPrice()) {
+
+            user->deductAmount(p->getPrice());
+            p->subtractQty(1);
+        }
+        else {
+            remaining.push_back(p);
+        }
+    }
+
+    cart = remaining;
 }
