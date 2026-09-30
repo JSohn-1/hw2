@@ -123,7 +123,11 @@ int main(int argc, char* argv[]) {
       } else if (cmd == "BUYCART") {
         string username;
 
-        if (ss >> username) {
+        ss >> username;
+
+        if (!ds.isValidUsername(username)) {
+          cout << "Invalid username" << endl;
+        } else {
           ds.buyCart(username);
         }
       } else {
