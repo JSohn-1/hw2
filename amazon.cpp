@@ -103,22 +103,12 @@ int main(int argc, char* argv[]) {
 
         if (!(ss >> username >> hitNumber)) {
           cout << "Invalid request" << endl;
-        } else if (!ds.isValidUsername(username)) {
-          cout << "Invalid username" << endl;
         } else if (hitNumber < 1 || hitNumber > (int)hits.size()) {
           cout << "Invalid request" << endl;
-        } else {
-          ds.addToCart(username, hits[hitNumber - 1]);
-        }
-      } else if (cmd == "VIEWCART") {
-        string username;
-
-        ss >> username;
-
-        if (!ds.isValidUsername(username)) {
+        } else if (!ds.isValidUsername(username)) {
           cout << "Invalid username" << endl;
         } else {
-          ds.viewCart(username);
+          ds.addToCart(username, hits[hitNumber - 1]);
         }
       } else if (cmd == "BUYCART") {
         string username;
