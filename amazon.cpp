@@ -108,6 +108,8 @@ int main(int argc, char* argv[]) {
         } else {
           if (hitNumber >= 1 && hitNumber <= (int)hits.size()) {
             ds.addToCart(username, hits[hitNumber - 1]);
+          } else {
+            cout << "Invalid request" << endl;
           }
         }
       } else if (cmd == "VIEWCART") {
