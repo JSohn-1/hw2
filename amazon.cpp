@@ -95,26 +95,18 @@ int main(int argc, char* argv[]) {
           ofile.close();
         }
         done = true;
-      }
-      /* Add support for other commands here */
-      else if (cmd == "ADD") {
+      } else if (cmd == "ADD") {
         string username;
         int hitNumber;
 
         if (!(ss >> username >> hitNumber)) {
           cout << "Invalid request" << endl;
+        } else if (hitNumber < 1 || hitNumber > (int)hits.size()) {
+          cout << "Invalid request" << endl;
+        } else if (!ds.isValidUsername(username)) {
+          cout << "Invalid username" << endl;
         } else {
-          cout << "DEBUG: " << username << " " << hitNumber << " "
-               << hits.size() << " " << ds.isValidUsername(username) << endl;
-
-          if (!ds.isValidUsername(username)) {
-            cout << "Invalid username" << endl;
-          } else if (hitNumber < 1 || hitNumber > (int)hits.size()) {
-            cout << "Invalid request" << endl;
-          } else {
-            cout << "DEBUG: ADDING" << endl;
-            ds.addToCart(username, hits[hitNumber - 1]);
-          }
+          ds.addToCart(username, hits[hitNumber - 1]);
         }
       } else if (cmd == "VIEWCART") {
         string username;
