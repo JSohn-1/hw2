@@ -28,12 +28,12 @@ std::string Movie::displayString() const {
   return "Genre: " + genre + " Rating: " + rating;
 }
 
-void Movie::dump(std::ostream& os) const {
-  os << "movie" << std::endl;
-  os << name_ << std::endl;
-  os << price_ << std::endl;
-  os << qty_ << std::endl;
-  os << genre << std::endl;
-  os << rating << std::endl;
-  os << category_ << std::endl;
+void Movie::dump(std::ostream& os) const
+{
+    os << "movie" << std::endl;
+    os << name_ << std::endl;
+    os << price_ << std::endl;
+    os << qty_ << std::endl;
+    os << genre << std::endl;
+    os << rating << std::endl;
 }

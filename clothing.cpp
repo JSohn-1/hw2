@@ -28,12 +28,12 @@ std::string Clothing::displayString() const {
   return "Size: " + this->size + " Brand: " + this->brand;
 }
 
-void Clothing::dump(std::ostream& os) const {
-  os << "clothing" << std::endl;
-  os << name_ << std::endl;
-  os << price_ << std::endl;
-  os << qty_ << std::endl;
-  os << size << std::endl;
-  os << brand << std::endl;
-  os << category_ << std::endl;
+void Clothing::dump(std::ostream& os) const
+{
+    os << "clothing" << std::endl;
+    os << name_ << std::endl;
+    os << price_ << std::endl;
+    os << qty_ << std::endl;
+    os << size << std::endl;
+    os << brand << std::endl;
 }

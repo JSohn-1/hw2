@@ -43,5 +43,4 @@ void Book::dump(std::ostream& os) const
     os << qty_ << std::endl;
     os << isbn << std::endl;
     os << author << std::endl;
-    os << category_ << std::endl;
 }
