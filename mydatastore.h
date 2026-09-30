@@ -22,6 +22,7 @@ public:
     void addToCart(std::string username, Product* p);
     void viewCart(std::string username);
     void buyCart(std::string username);
+    bool isValidUsername(const std::string& username);
 
 private:
     std::set<Product*> products_;

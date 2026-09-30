@@ -101,7 +101,11 @@ int main(int argc, char* argv[]) {
         string username;
         int hitNumber;
 
-        if (ss >> username >> hitNumber) {
+        ss >> username >> hitNumber;
+
+        if (!ds.isValidUsername(username)) {
+          cout << "Invalid username" << endl;
+        } else {
           if (hitNumber >= 1 && hitNumber <= (int)hits.size()) {
             ds.addToCart(username, hits[hitNumber - 1]);
           }
@@ -109,7 +113,11 @@ int main(int argc, char* argv[]) {
       } else if (cmd == "VIEWCART") {
         string username;
 
-        if (ss >> username) {
+        ss >> username;
+
+        if (!ds.isValidUsername(username)) {
+          cout << "Invalid username" << endl;
+        } else {
           ds.viewCart(username);
         }
       } else if (cmd == "BUYCART") {

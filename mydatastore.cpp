@@ -139,3 +139,17 @@ void MyDataStore::buyCart(std::string username)
 
     cart = remaining;
 }
+
+bool MyDataStore::isValidUsername(const std::string& username)
+{
+    for (std::set<User*>::iterator it = users_.begin();
+         it != users_.end();
+         ++it) {
+
+        if ((*it)->getName() == username) {
+            return true;
+        }
+    }
+
+    return false;
+}
