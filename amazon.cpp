@@ -116,6 +116,16 @@ int main(int argc, char* argv[]) {
             ds.addToCart(username, hits[hitNumber - 1]);
           }
         }
+      } else if (cmd == "VIEWCART") {
+        string username;
+
+        ss >> username;
+
+        if (!ds.isValidUsername(username)) {
+          cout << "Invalid username" << endl;
+        } else {
+          ds.viewCart(username);
+        }
       } else if (cmd == "BUYCART") {
         string username;
 
